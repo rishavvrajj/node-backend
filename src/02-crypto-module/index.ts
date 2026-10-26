@@ -11,8 +11,8 @@ console.log(requestId); // 'a3bb189e-8bf9-3888-9912-ace4e6543002'
 // Generates cryptographically strong random bytes.
 // Safer than Math.random() — uses the OS entropy pool, not a predictable seed.
 
-const sessionToken      = crypto.randomBytes(16).toString('hex');       // 32 chars, 128-bit
-const apiKey            = crypto.randomBytes(32).toString('hex');       // 64 chars, 256-bit
+const sessionToken = crypto.randomBytes(16).toString('hex');       // 32 chars, 128-bit
+const apiKey = crypto.randomBytes(32).toString('hex');       // 64 chars, 256-bit
 const passwordResetLink = crypto.randomBytes(32).toString('base64url'); // shorter, URL-safe
 
 console.log({ sessionToken, apiKey, passwordResetLink });
@@ -32,7 +32,7 @@ console.log({ sha256, sha512 });
 // Proves the message came from someone who holds the key (authenticity + integrity).
 // Use for: signing JWTs, verifying webhook payloads, API request signing.
 
-const secret  = process.env.HMAC_SECRET ?? 'dev-secret'; // load from env in production
+const secret = process.env.HMAC_SECRET ?? 'dev-secret'; // load from env in production
 const payload = 'userId=42&action=transfer';
 
 const signature = crypto.createHmac('sha256', secret).update(payload).digest('hex');
@@ -41,7 +41,7 @@ console.log({ payload, signature });
 // Verifying — always use timingSafeEqual, never ===
 // Regular string comparison leaks timing info that attackers can exploit.
 function verifyHmac(payload: string, receivedSig: string, key: string): boolean {
-  const expected    = crypto.createHmac('sha256', key).update(payload).digest('hex');
+  const expected = crypto.createHmac('sha256', key).update(payload).digest('hex');
   const expectedBuf = Buffer.from(expected, 'hex');
   const receivedBuf = Buffer.from(receivedSig, 'hex');
   if (expectedBuf.length !== receivedBuf.length) return false;
@@ -58,12 +58,12 @@ console.log('tampered?', verifyHmac('userId=1&action=transfer', signature, secre
 
 async function hashPassword(password: string): Promise<string> {
   const salt = crypto.randomBytes(16).toString('hex'); // unique per password, stored alongside hash
-  const key  = await new Promise<Buffer>((resolve, reject) =>
+  const key = await new Promise<Buffer>((resolve, reject) =>
     crypto.scrypt(password, salt, 64, (err, key) => err ? reject(err) : resolve(key))
   );
   return `${salt}:${key.toString('hex')}`; // store both — you need the salt to verify
 }
-
+  
 async function verifyPassword(password: string, stored: string): Promise<boolean> {
   const [salt, hash] = stored.split(':') as [string, string];
   const key = await new Promise<Buffer>((resolve, reject) =>

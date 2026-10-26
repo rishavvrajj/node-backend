@@ -10,9 +10,9 @@ console.log(path.delimiter); // ';' on Windows, ':' on Linux/macOS (used in PATH
 
 const projectRoot = process.cwd(); // folder from which the Node.js process was started
 
-const userId       = '42';
+const userId = '42';
 const originalName = 'profile.photo.png';
-const uploadPath   = path.join(projectRoot, 'uploads', userId, originalName);
+const uploadPath = path.join(projectRoot, 'uploads', userId, originalName);
 
 console.log(uploadPath);
 // e.g. 'C:\Users\risha\learning\node-backend\uploads\42\profile.photo.png'
@@ -29,10 +29,10 @@ console.log(path.resolve('/var/data', '..', 'logs'));    // '/var/logs'  — '..
 // extname   — extension including the leading dot
 // dirname   — containing directory
 
-const filename  = path.basename(uploadPath);             // 'profile.photo.png'
-const ext       = path.extname(uploadPath);              // '.png'
-const stem      = path.basename(uploadPath, ext);        // 'profile.photo' (name without ext)
-const dir       = path.dirname(uploadPath);              // '...uploads\42'
+const filename = path.basename(uploadPath);             // 'profile.photo.png'
+const ext = path.extname(uploadPath);              // '.png'
+const stem = path.basename(uploadPath, ext);        // 'profile.photo' (name without ext)
+const dir = path.dirname(uploadPath);              // '...uploads\42'
 
 console.log({ filename, ext, stem, dir });
 
@@ -59,7 +59,7 @@ console.log(path.normalize('uploads//42/../42/profile.photo.png'));
 // Useful for computing import paths or constructing URLs from absolute paths.
 
 const from = path.join(projectRoot, 'src');
-const to   = path.join(projectRoot, 'uploads', userId);
+const to = path.join(projectRoot, 'uploads', userId);
 
 console.log(path.relative(from, to)); // '..\uploads\42'  (on Windows)
 

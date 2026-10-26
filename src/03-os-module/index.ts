@@ -21,8 +21,8 @@ console.log(cpus[0]?.times);        // { user, nice, sys, idle, irq } — time s
 
 // ── Memory ────────────────────────────────────────────────────────────────────
 const totalGB = (os.totalmem() / 1024 ** 3).toFixed(2);
-const freeGB  = (os.freemem()  / 1024 ** 3).toFixed(2);
-const usedGB  = ((os.totalmem() - os.freemem()) / 1024 ** 3).toFixed(2);
+const freeGB = (os.freemem() / 1024 ** 3).toFixed(2);
+const usedGB = ((os.totalmem() - os.freemem()) / 1024 ** 3).toFixed(2);
 
 console.log(`Total: ${totalGB} GB | Free: ${freeGB} GB | Used: ${usedGB} GB`);
 

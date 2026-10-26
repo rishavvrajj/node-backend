@@ -1,14 +1,14 @@
 // ── Types ─────────────────────────────────────────────────────────────────────
 
 type User = {
-  id:   number;
+  id: number;
   name: string;
   role: 'User' | 'Admin';
 };
 
 const users: User[] = [
   { id: 1, name: 'Alice', role: 'Admin' },
-  { id: 2, name: 'Bob',   role: 'User'  },
+  { id: 2, name: 'Bob', role: 'User' },
 ];
 
 // ── Callback pattern ──────────────────────────────────────────────────────────
@@ -16,7 +16,7 @@ const users: User[] = [
 // Error comes first — always check it before using the result.
 
 function findUserWithCallback(
-  userId:   number,
+  userId: number,
   callback: (err: Error | null, user?: User) => void,
 ): void {
   setTimeout(() => {
@@ -57,11 +57,11 @@ function fetchUserWithPromise(userId: number): Promise<User> {
 }
 
 fetchUserWithPromise(2)
-  .then(user  => console.log('Promise result:', user))
+  .then(user => console.log('Promise result:', user))
   .catch((err: Error) => console.error('Promise error:', err.message));
 
 fetchUserWithPromise(99)
-  .then(user  => console.log('Promise result:', user))
+  .then(user => console.log('Promise result:', user))
   .catch((err: Error) => console.error('Promise error:', err.message)); // User 99 not found
 
 // ── Promise chaining ──────────────────────────────────────────────────────────

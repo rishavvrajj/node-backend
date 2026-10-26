@@ -4,7 +4,7 @@ import process from 'node:process';
 // process.env holds all environment variables. Use ?? to provide defaults.
 
 const nodeEnv = process.env.NODE_ENV ?? 'development';
-const port    = Number(process.env.PORT ?? 3000);
+const port = Number(process.env.PORT ?? 3000);
 
 console.log({ nodeEnv, port });
 
@@ -12,7 +12,7 @@ console.log({ nodeEnv, port });
 // argv[0] = node executable, argv[1] = script path, argv[2+] = your args
 // Run: npx tsx index.ts start --fail
 
-const args    = process.argv.slice(2);       // ['start', '--fail']
+const args = process.argv.slice(2);       // ['start', '--fail']
 const command = args[0] ?? 'start';
 
 console.log({ args, command });
@@ -35,11 +35,11 @@ if (shouldFail) {
 process.on('exit', (code) => console.log(`Process exited with code ${code}`));
 
 process.on('SIGTERM', () => { console.log('SIGTERM received'); process.exit(0); });
-process.on('SIGINT',  () => { console.log('SIGINT received');  process.exit(0); });
+process.on('SIGINT', () => { console.log('SIGINT received'); process.exit(0); });
 
 // ── Error Handling ────────────────────────────────────────────────────────────
-process.on('uncaughtException',   (err)    => { console.error('Uncaught:', err);   process.exit(1); });
-process.on('unhandledRejection',  (reason) => { console.error('Unhandled:', reason); });
+process.on('uncaughtException', (err) => { console.error('Uncaught:', err); process.exit(1); });
+process.on('unhandledRejection', (reason) => { console.error('Unhandled:', reason); });
 
 // ── Useful Properties ─────────────────────────────────────────────────────────
 

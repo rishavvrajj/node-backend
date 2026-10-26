@@ -57,7 +57,7 @@ async function promiseTimers(): Promise<void> {
   // setInterval as an async iterable — iterate with for await
   // AbortController lets you stop it cleanly from outside the loop
   const controller = new AbortController();
-  let ticks        = 0;
+  let ticks = 0;
 
   console.log('11. starting async interval (3 ticks)...');
 

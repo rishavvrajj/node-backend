@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    /* Target Environment & Module System */
+    "target": "ES2022",                          /* Output modern JavaScript */
+    "module": "NodeNext",                        /* Use modern Node.js module resolution */
+    "moduleResolution": "NodeNext",              /* Match NodeNext module rules */
+    "lib": ["ES2022"],                           /* Include modern JS library types */
+    "types": ["node"],                          /* Load Node.js global type definitions */
+
+    /* Build Artifacts */
+    "outDir": "./dist",                          /* Redirect compilation output folder */
+    "rootDir": "./src",                          /* Specify the root folder of input source files */
+    "sourceMap": true,                           /* Generate source maps for debugging */
+    "removeComments": true,                      /* Strip comments to reduce production file size */
+
+    /* Strict Type-Checking */
+    "strict": true,                              /* Enable all strict type-checking options */
+    "noImplicitAny": true,                       /* Error on expressions with an implied 'any' type */
+    "strictNullChecks": true,                    /* Ensure null and undefined are handled explicitly */
+    "noUncheckedIndexedAccess": true,            /* Add undefined to objects with unknown keys */
+
+    /* Linter & Code Quality Rules */
+    "noImplicitReturns": true,                   /* Error when code paths don't explicitly return */
+    "noFallthroughCasesInSwitch": true,           /* Report errors for fallthrough cases in switch statements */
+    "noUnusedLocals": true,                      /* Report errors on unused local variables */
+    "noUnusedParameters": true,                  /* Report errors on unused function parameters */
+
+    /* Interoperability & System */
+    "esModuleInterop": true,                     /* Emit additional JavaScript for CommonJS compatibility */
+    "skipLibCheck": true,                        /* Skip type checking of all declaration (*.d.ts) files */
+    "forceConsistentCasingInFileNames": true,    /* Disallow inconsistently-cased references to files */
+  },
+  "include": ["src/**/*"],                       /* Compile all files inside the src directory */
+  "exclude": ["node_modules", "dist"]            /* Explicitly exclude package folders and build outputs */
+}
